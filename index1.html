@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2 style="color: blue; font-family: Verdana, Geneva, Tahoma, sans-serif;">Registration Form</h2>
+
+
+Name:<br>
+<input type="text" id="name">
+<p id="nError"></p>
+
+Email:<br>
+<input type="text" id="email">
+<p id="eError"></p>
+
+Password:<br>
+<input type="password" id="pass">
+<p id="pError" ></p>
+
+<button id="btn" disabled>Submit</button>
+
+<script>
+
+function check(){
+
+    var name = document.getElementById("name").value;
+    var email = document.getElementById("email").value;
+    var pass = document.getElementById("pass").value;
+
+    var valid = true;
+
+    if(name==""){
+        document.getElementById("nError").innerHTML="Enter Name";
+        valid=false;
+    }
+    else{
+        document.getElementById("nError").innerHTML="";
+    }
+
+    if(email.indexOf("@")==-1){
+        document.getElementById("eError").innerHTML="Invalid Email";
+        valid=false;
+    }
+    else{
+        document.getElementById("eError").innerHTML="";
+    }
+
+    if(pass.length<6){
+        document.getElementById("pError").innerHTML="Minimum 6 characters";
+        valid=false;
+    }
+    else{
+        document.getElementById("pError").innerHTML="";
+    }
+
+    document.getElementById("btn").disabled=!valid;
+}
+
+document.getElementById("name").onkeyup=check;
+document.getElementById("email").onkeyup=check;
+document.getElementById("pass").onkeyup=check;
+
+</script>
+
+</body>
+</html>
